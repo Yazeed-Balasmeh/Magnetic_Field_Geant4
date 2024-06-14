@@ -67,7 +67,9 @@ Build and Execution
 Ensure to link with appropriate Geant4 libraries and compile your application with these components included.
 
 To start the simulation:
-1) Go to bulid 
-2) cmake ..
-3) make 
-4) ./Mag_sim
+
+1. First, download the files from GitHub using the git clone method.
+2. Create a build folder within the directory where you downloaded your simulation files (use mkdir build).
+3. Inside the build directory, run cmake ...
+4. Then run make.
+5. Execute the simulation with ./Mag_sim.
