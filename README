@@ -1,0 +1,73 @@
+Geant4 Simulation for Magnetic Field
+This repository contains components for a Geant4-based simulation aimed at studying particle interactions in the presence of a magnetic field.
+
+Files Overview
+1. detector.hh
+Purpose: Defines the SensitiveDetector class, which implements a sensitive detector in Geant4.
+
+Details:
+
+SensitiveDetector class inherits from G4VSensitiveDetector.
+Reads efficiency data from eff.dat file for photon detection.
+Implements ProcessHits method to record photon hits and detector positions.
+2. action.hh
+Purpose: Implements the ActionInitialization class for initializing user-defined actions in Geant4 simulation.
+
+Details:
+
+ActionInitialization class inherits from G4VUserActionInitialization.
+Defines Build method to set up primary particle generation, run action, event action, and stepping action.
+3. event.hh
+Purpose: Defines the EventAction class to manage actions at the beginning and end of each event in the simulation.
+
+Details:
+
+EventAction class inherits from G4UserEventAction.
+Implements BeginOfEventAction and EndOfEventAction methods to handle event initialization and finalize actions (e.g., energy deposition).
+4. particlegenerator.hh
+Purpose: Implements the ParticleGenerator class for defining primary particle generation.
+
+Details:
+
+ParticleGenerator class inherits from G4VUserPrimaryGeneratorAction.
+Defines GeneratePrimaries method to specify primary particle properties (e.g., type, energy, direction).
+5. run.hh
+Purpose: Implements the RunAction class to manage actions at the beginning and end of each run in the simulation.
+
+Details:
+
+RunAction class inherits from G4UserRunAction.
+Implements BeginOfRunAction and EndOfRunAction methods to initialize and finalize run-specific actions (e.g., creating output files, writing data).
+6. stepping.hh
+Purpose: Defines the SteppingAction class to manage actions at each step of particle propagation in the simulation.
+
+Details:
+
+SteppingAction class inherits from G4UserSteppingAction.
+Implements UserSteppingAction method to track and accumulate energy deposition during particle propagation.
+7. construction.hh
+Purpose: Defines construction of detector geometry and materials for the simulation.
+
+Details:
+
+Provides construction methods for setting up detector geometry using G4Box, G4LogicalVolume, and related Geant4 classes.
+Includes definitions for materials such as G4Material and physical volumes using G4PVPlacement.
+Magnetic Field Implementation
+To simulate a magnetic field using Geant4, ensure the following:
+
+Define and initialize the magnetic field within the construction.hh file using G4UniformMagField or G4GlobalMagFieldMessenger.
+Implement magnetic field-related actions in SensitiveDetector, EventAction, SteppingAction, or other relevant classes based on simulation requirements.
+Usage
+To use these components:
+
+Ensure Geant4 libraries and headers are properly installed.
+Include these header files in your Geant4 application.
+Customize and extend these components based on your specific simulation requirements.
+Build and Execution
+Ensure to link with appropriate Geant4 libraries and compile your application with these components included.
+
+To start the simulation:
+1) Go to bulid 
+2) cmake ..
+3) make 
+4) ./Mag_sim
